@@ -1,19 +1,19 @@
 import argparse
 import logging
-import sys
 
 from pathlib import Path
 
 import pyrosimple
+
+from autortorrent.db import Base, engine, insert_client_paths, insert_paths
+from autortorrent.scan import scan_client, scan_root
+from autortorrent.seed_torrent_file import remove_if_loaded, run
 
 
 logger = logging.getLogger(__name__)
 
 
 def scan(args):
-    from autortorrent.db import Base, engine, insert_client_paths, insert_paths
-    from autortorrent.scan import scan_client, scan_root
-
     Base.metadata.create_all(engine)
     for target in args.target:
         if Path(target).is_dir():
@@ -24,8 +24,6 @@ def scan(args):
 
 
 def load(args):
-    from autortorrent.seed_torrent_file import remove_if_loaded, run
-
     for target in args.target:
         target_path = Path(target)
         if target_path.is_file():
@@ -38,7 +36,7 @@ def load(args):
                 raise
 
 
-def run():
+def cli_run():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers()
     logging.basicConfig(level=logging.DEBUG)
@@ -57,4 +55,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    cli_run()

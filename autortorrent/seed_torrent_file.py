@@ -1,5 +1,4 @@
 import logging
-import os.path
 import sys
 import time
 
@@ -20,9 +19,8 @@ FileMatchType = Dict[Path, List[File]]
 logger = logging.getLogger(__name__)
 
 
-def load_multi_torrent(metafile: Metafile, limit: int = 15):
+def load_multi_torrent(metafile: Metafile, _limit: int = 15):
     name = metafile["info"]["name"]
-    matches: Dict[Path, List[File]] = {}
     with Session(engine) as session:
         # Fill in exact matches
         first_file_info = metafile["info"]["files"][0]
@@ -54,7 +52,6 @@ def load_multi_torrent(metafile: Metafile, limit: int = 15):
                 logger.error("Could not match: %s", exc)
 
 
-
 def closest_ancestor(matches: Dict[Path, List[File]]):
     for k, v in matches.items():
         print(k, [(f.name, f.path) for f in v])
@@ -63,7 +60,6 @@ def closest_ancestor(matches: Dict[Path, List[File]]):
 def load_against_match(
     metafile: Metafile, match: Path, hash_check: bool = True
 ) -> None:
-    logger = logging.getLogger(__name__)
     name = metafile["info"]["name"]
     logger.debug("Attempting full load of %s against %s", name, match)
     metafile.add_fast_resume(match)
