@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "autortorrent"
+version = "0.1.0"
+description = "A script to find and reseed torrents"
+authors = ["kannibalox <kannibalox@gmail.com>"]
+readme = "README.md"
+packages = [{include = "autortorrent"}]
+repository = "https://github.com/kannibalox/autortorrent"
+
+[tool.poetry.scripts]
+art2 = "autortorrent.cli:run"
+
+[tool.poetry.dependencies]
+python = "^3.7.2"
+pyrosimple = "^2.5.1"
+psycopg = "^3.1.6"
+sqlalchemy = "^2.0.8"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.15.9"
+mypy = "^0.991"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint]
+[tool.pylint.'message control']
+disable="locally-disabled, no-else-return, too-many-arguments, logging-format-interpolation, too-few-public-methods, protected-access, duplicate-code, consider-using-f-string, fixme, invalid-name, line-too-long, design, too-many-lines, missing-class-docstring, missing-function-docstring, missing-module-docstring"
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+force_single_line = false
+atomic = true
+include_trailing_comma = true
+lines_after_imports = 2
+lines_between_types = 1
+use_parentheses = true
+extend_skip = "docs/"
+remove_redundant_aliases = true
