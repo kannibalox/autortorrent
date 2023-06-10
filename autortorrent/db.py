@@ -6,8 +6,12 @@ from sqlalchemy import BigInteger, String, create_engine, delete
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
 
 
+db_url = settings.AUTORTORRENT.db_url
+if db_url.startswith("sqlite:///"):
+    db_url = "sqlite:///" + str(Path(db_url[10:]).expanduser())
+    Path(db_url[10:]).expanduser().parent.mkdir(exist_ok=True, parents=True)
 engine = create_engine(
-    settings.AUTORTORRENT.db_url,
+    db_url,
     echo=True
 )
 

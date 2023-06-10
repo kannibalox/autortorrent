@@ -1,9 +1,10 @@
+# autortorrent2
+
 This is an rtorrent-only file reseeder in the same vein as
 [autotorrent2](https://github.com/JohnDoee/autotorrent2), which I
 would highly recommend using even if you use rtorrent. Unfortunately
 autotorrent2 needs some optimization before I'm ready to use it, so
-this is just a small project to hopefully only be used intermediately,
-until autotorrent2 can be optimized.
+this is just a small project to hopefully only be used intermediately.
 
 # Installation
 
@@ -17,7 +18,7 @@ In `~/.config/pyrosimple/config`, set the following config values:
 
 ```
 [AUTORTORRENT]
-db_url = "postgresql+psycopg://username:password@localhost/autortorrent" # Any sqlalchemy url: https://docs.sqlalchemy.org/en/20/core/engines.html
+db_url = "sqlite://~/.data/autortorrent/autortorrent.db" # Any sqlalchemy url is valid: https://docs.sqlalchemy.org/en/20/core/engines.html
 ```
 
 # Usage
