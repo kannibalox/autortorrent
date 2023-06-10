@@ -6,13 +6,13 @@ would highly recommend using even if you use rtorrent. Unfortunately
 autotorrent2 needs some optimization before I'm ready to use it, so
 this is just a small project to hopefully only be used intermediately.
 
-# Installation
+## Installation
 
 ```bash
 pip install https://github.com/kannibalox/autortorrent.git
 ```
 
-# Configuration
+## Configuration
 
 In `~/.config/pyrosimple/config`, set the following config values:
 
@@ -21,17 +21,17 @@ In `~/.config/pyrosimple/config`, set the following config values:
 db_url = "sqlite://~/.data/autortorrent/autortorrent.db" # Any sqlalchemy url is valid: https://docs.sqlalchemy.org/en/20/core/engines.html
 ```
 
-# Usage
+## Usage
 
-## Scanning
+### Scanning files
 
 Scan a path: `art2 scan <path>`
 
-## Scanning
+### Scanning clients
 
 Scan a rtorrent instance: `art2 scan <instance alias or url>`
 
-## Loading a torrent
+### Loading a torrent
 
 ```bash
 art2 load <path>.torrent
