@@ -8,7 +8,7 @@ packages = [{include = "autortorrent"}]
 repository = "https://github.com/kannibalox/autortorrent"
 
 [tool.poetry.scripts]
-art2 = "autortorrent.cli:run"
+art2 = "autortorrent.cli:cli_run"
 
 [tool.poetry.dependencies]
 python = "^3.7.2"
